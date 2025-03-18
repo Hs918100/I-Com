@@ -1,0 +1,30 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4">Welcome to I-Commerce</h1>
+  <p class="lead">Your one-stop shop for amazing products.</p>
+  <hr class="my-4">
+  <p>Browse our latest collection and find the perfect products for you.</p>
+</div>
+
+<h1>Our Products</h1>
+
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <a href="<%= product_path(product) %>" style="text-decoration: none; color: Black">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text"><%= product.description.truncate(100) %></p>
+            <p><strong>Price: </strong> $<%= product.price %></p>
+          </a>
+          
+          <%= form_with url: cart_items_path, method: :post do %>
+            <%= hidden_field_tag :product_id, product.id %>
+            <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>

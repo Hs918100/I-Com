@@ -1,0 +1,17 @@
+<h1>Edit User</h1>
+
+<%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
+  <div class="mb-3">
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email, class: "form-control", disabled: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :role, "Role" %>
+    <%= f.select :role, User.roles.keys.map { |role| [role.humanize, role] }, {}, class: "form-select" %>
+  </div>
+
+  <%= f.submit "Update User", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Back", admin_users_path, class: "btn btn-secondary" %>

@@ -1,0 +1,30 @@
+<%= form_with model: @product, url: admin_products_path, method: :post do |f| %>
+  <div class="mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :category %>
+    <%= f.text_field :category, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :price %>
+    <%= f.number_field :price, class: "form-control", step: 0.01 %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :stock %>
+    <%= f.number_field :stock, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Create Product", class: "btn btn-success" %>
+<% end %>
+
+<%= link_to "Back", admin_products_path, class: "btn btn-secondary" %>

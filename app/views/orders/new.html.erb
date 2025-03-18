@@ -1,0 +1,7 @@
+<h1>Checkout</h1>
+
+<p>Total: $<%= current_user.cart.cart_items.sum { |item| item.quantity * item.product.price } %></p>
+
+<%= form_with model: @order, url: orders_path, method: :post do %>
+  <%= submit_tag "Place Order", class: "btn btn-primary" %>
+<% end %>
