@@ -67,7 +67,16 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :production do
+  gem "skylight"
+end
+
 gem 'pundit'
 gem "bootstrap", "~> 5.3"
 gem 'sassc-rails'
 gem "pry", "~> 0.15.2"
+gem "sentry-ruby"
+gem "sentry-rails" 
+gem "skylight"
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'

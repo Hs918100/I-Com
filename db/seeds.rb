@@ -8,7 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Product.create([
+unless User.find(1).present?
+  User.create!(name: "Admin", email: "hs918100@gmail.com", password: "harish")
+end
+
+unless Product.first.present? 
+  Product.create([
   { name: 'Wireless Mouse', description: 'A smooth wireless mouse with ergonomic design.', category: 'Electronics', stock: 120, price: 29.99 },
   { name: 'Bluetooth Headphones', description: 'Over-ear headphones with noise cancellation.', category: 'Electronics', stock: 75, price: 89.99 },
   { name: 'Smartphone Charger', description: 'Fast charging cable for smartphones.', category: 'Accessories', stock: 150, price: 12.99 },
@@ -76,3 +81,4 @@ Product.create([
   { name: 'Air Conditioner', description: 'Portable air conditioner with remote control.', category: 'Appliances', stock: 45, price: 299.99 },
   { name: 'Fan', description: 'High-speed oscillating fan for cooling.', category: 'Appliances', stock: 100, price: 29.99 }
 ])
+end

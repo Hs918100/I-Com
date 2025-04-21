@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.search_by_keyword(params[:query]).records
+    else
+      @products = Product.all
+    end
   end
 
   def show

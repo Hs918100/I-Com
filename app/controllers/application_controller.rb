@@ -1,7 +1,7 @@
 require 'pry'
 class ApplicationController < ActionController::Base
     include Pundit
-  
+    before_action :set_sentry_context
     before_action :authenticate_user!
     after_action :verify_authorized, except: :index, unless: :devise_controller?
     before_action :configure_permitted_parameters, if: :devise_controller?
@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
       root_path # or any other path you'd like
     end
 
+    def set_sentry_context
+      Sentry.set_user(id: current_user.id, email: current_user.email) if current_user
+    end
+    
     def migrate_cart_to_user
       # Check if the user has a session-based cart
       return unless session[:cart].present?

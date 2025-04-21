@@ -19,7 +19,7 @@ class CartItemsController < ApplicationController
       end
       
     else
-      session[:cart] ||= []  # Initialize cart if it's not already in the session
+      session[:cart] = [] unless session[:cart].is_a?(Array)  # Initialize cart if it's not already in the session
     
       # Find or initialize the cart item
       cart_item = session[:cart].find { |item| item["product_id"] == product.id }
